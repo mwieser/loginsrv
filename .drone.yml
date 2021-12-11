@@ -1,0 +1,18 @@
+kind: pipeline
+type: kubernetes
+name: default
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+  - name: docker build
+    image: plugins/gcr
+    settings:
+      registry: europe-west3-docker.pkg.dev
+      repo: europe-west3-docker.pkg.dev/black-pearl-334121/mwieser/tarent-loginsrv
+      target: app
+      auto_tag: true
+      json_key:
+        from_secret: google_credentials

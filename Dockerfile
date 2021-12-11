@@ -15,7 +15,7 @@ RUN go build -a --ldflags '-linkmode external -extldflags "-static"' .
 
 # ----------
 
-FROM alpine:3.13
+FROM alpine:3.13 as app
 RUN apk --update --no-cache add ca-certificates \
     && addgroup -S loginsrv && adduser -S -g loginsrv loginsrv
 USER loginsrv
